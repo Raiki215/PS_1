@@ -27,4 +27,4 @@ window.onload = function() {
     };
     // ゲーム開始
     game = new Phaser.Game(config);
-}; 
+};
