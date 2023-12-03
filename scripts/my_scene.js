@@ -8,6 +8,7 @@ class MyScene extends Phaser.Scene {
         super({ key: 'MyScene', active: true });
     }
 
+
     // シーンの事前読み込み処理
     preload() {
          // 画像の読み込み(使用する時の名前, パス)
@@ -24,6 +25,15 @@ class MyScene extends Phaser.Scene {
         this.taro = this.physics.add.image(D_WIDTH/2, D_HEIGHT/2, 'taro');
         this.jiro = this.physics.add.image(D_WIDTH/2, D_HEIGHT/2, 'jiro');
         this.text = this.add.text(10, 10, 'Scene 1').setFontSize(32).setColor('#ff0');
+        this.text2 = this.add.text(600, 400, 'MyWorld').setFontSize(20).setColor('#ff0');
+
+        this.helloText = this.add.text(100, 50, '');
+        this.heyText = this.add.text(100, 50, '');
+
+        this.keys = {};
+        this.keys.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        this.keys.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        this.keys.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         // this.taro.angle = 0;
         // this.player_direction = 1;
     }
@@ -56,6 +66,15 @@ class MyScene extends Phaser.Scene {
         } else if (cursors.right.isDown) {
             this.taro.x += 50;
             this.jiro.x -= 50;
+        }
+
+        if(this.keys.keyA.isDown){
+            this.helloText.setText('Hello!');
+        }else if(this.keys.keyS.isDown){
+            this.heyText.setText('Hey!');
+        }else if(this.keys.keyD.isDown){
+            this.helloText.setText('');
+            this.heyText.setText('');
         }
     }
 
