@@ -15,6 +15,7 @@ class MyScene extends Phaser.Scene {
         this.load.image('sky', 'assets/background.png');
         this.load.image('taro', 'assets/taro.png');
         this.load.image('jiro', 'assets/jiro.png');
+        this.load.image('hanako', 'assets/hanako.png');
     }
 
     // シーン初期化処理
@@ -27,6 +28,7 @@ class MyScene extends Phaser.Scene {
         this.text = this.add.text(10, 10, 'Scene 1').setFontSize(32).setColor('#ff0');
         this.text2 = this.add.text(600, 400, 'MyWorld').setFontSize(20).setColor('#ff0');
 
+
         this.helloText = this.add.text(100, 50, '');
         this.heyText = this.add.text(100, 50, '');
 
@@ -34,6 +36,7 @@ class MyScene extends Phaser.Scene {
         this.keys.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         this.keys.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         this.keys.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        this.keys.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         // this.taro.angle = 0;
         // this.player_direction = 1;
     }
@@ -75,6 +78,9 @@ class MyScene extends Phaser.Scene {
         }else if(this.keys.keyD.isDown){
             this.helloText.setText('');
             this.heyText.setText('');
+        }else if(this.keys.keyW.isDown){
+            let randx = Phaser.Math.Between(100, 400);
+            this.hanako = this.add.image(randx, 100, 'hanako');
         }
     }
 
